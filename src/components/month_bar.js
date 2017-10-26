@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatesContainer from './dates_container';
+import Dates from './dates';
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var monthNumber = new Date().getMonth();
@@ -75,9 +76,10 @@ class MonthBar extends Component {
     return(
       <div>
         <h2 onClick={this.handleLeftClick.bind(this)} >left</h2>
-        <h1>{this.state.month} {this.state.year} {this.state.totalDays}</h1>
+        <h1>{this.state.month} {this.state.year}</h1>
         <h2 onClick={this.handleRightClick.bind(this)}>right</h2>
         <DatesContainer />
+        <Dates days = {this.state.totalDays}/>
       </div>
     );
   }
