@@ -2,21 +2,27 @@ import React, { Component } from 'react';
 import DatesContainer from './dates_container';
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var number = new Date().getMonth();
+var monthNumber = new Date().getMonth();
+var yearNumber = 0;
 
 class MonthBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      month: ""
+      month: "",
+      year: "",
+      totalDays: "",
+      daysArray:[]
     };
   }
 
 
   componentDidMount () {
     this.setState({
-      month: this.selectMonth(number)
+      month: this.selectMonth(monthNumber),
+      year: new Date().getFullYear(),
+      totalDays: new Date(new Date().getFullYear(), monthNumber + 1, 0).getDate()
     })
 
   }
@@ -28,31 +34,38 @@ class MonthBar extends Component {
   }
 
   handleLeftClick() {
-    if (number > 0) {
-      number -= 1;
+    if (monthNumber > 0) {
+      monthNumber -= 1;
       this.setState({
-        month: this.selectMonth(number)
+        month: this.selectMonth(monthNumber),
+        totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate()
       })
     }
     else {
-      number = 11;
+      monthNumber = 11;
+      yearNumber -= 1
       this.setState({
-        month: this.selectMonth(number)
+        month: this.selectMonth(monthNumber),
+        year: this.state.year - 1,
+        totalDays: new Date(this.state.year - 1, monthNumber + 1, 0).getDate()
       })
     }
   }
 
   handleRightClick() {
-    if (number < 11) { //weird
-      number += 1
+    if (monthNumber < 11) { //weird
+      monthNumber += 1
       this.setState({
-        month: this.selectMonth(number)
+        month: this.selectMonth(monthNumber),
+        totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate()
       })
     }
     else {
-      number = 0;
+      monthNumber = 0;
       this.setState({
-        month: this.selectMonth(number)
+        month: this.selectMonth(monthNumber),
+        year: this.state.year + 1,
+        totalDays: new Date(this.state.year + 1, monthNumber + 1, 0).getDate()
       })
     }
   }
@@ -62,7 +75,7 @@ class MonthBar extends Component {
     return(
       <div>
         <h2 onClick={this.handleLeftClick.bind(this)} >left</h2>
-        <h1>{this.state.month}</h1>
+        <h1>{this.state.month} {this.state.year} {this.state.totalDays}</h1>
         <h2 onClick={this.handleRightClick.bind(this)}>right</h2>
         <DatesContainer />
       </div>
