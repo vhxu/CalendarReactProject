@@ -5,6 +5,7 @@ import Dates from './dates';
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var monthNumber = new Date().getMonth();
 var yearNumber = 0;
+var datesArray = [];
 
 class MonthBar extends Component {
   constructor(props) {
@@ -20,10 +21,17 @@ class MonthBar extends Component {
 
 
   componentDidMount () {
+    for (var i = 1; i <= this.totalDays(); i++) {
+
+      datesArray.push({
+        day: i
+      });
+    }
     this.setState({
       month: this.selectMonth(monthNumber),
       year: new Date().getFullYear(),
-      totalDays: new Date(new Date().getFullYear(), monthNumber + 1, 0).getDate()
+      totalDays: this.totalDays(),
+      days: datesArray
     })
 
   }
@@ -34,12 +42,16 @@ class MonthBar extends Component {
     );
   }
 
+  totalDays() {
+    return new Date(new Date().getFullYear(), monthNumber + 1, 0).getDate()
+  }
+
   handleLeftClick() {
     if (monthNumber > 0) {
       monthNumber -= 1;
       this.setState({
         month: this.selectMonth(monthNumber),
-        totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate()
+        totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate(),
       })
     }
     else {
@@ -72,14 +84,22 @@ class MonthBar extends Component {
   }
 
   render() {
+    // if (this.state.days != []) {
+    //   var datesComponent = <Dates totalDays = {this.state.totalDays} days = {this.state.days} />
+    // } else {
+    //   var datesComponent = null;
+    // }
+    // var data = (this.state.days) ? this.state.days : [];
 
     return(
       <div>
-        <h2 onClick={this.handleLeftClick.bind(this)} >left</h2>
-        <h1>{this.state.month} {this.state.year}</h1>
-        <h2 onClick={this.handleRightClick.bind(this)}>right</h2>
+        <div className='month-bar'>
+          <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
+          <div style={{color:'red'}}>{this.state.month} {this.state.year}</div>
+          <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
+        </div>
         <DatesContainer />
-        <Dates days = {this.state.totalDays}/>
+        <Dates totalDays = {this.state.totalDays} days = {this.state.days} />
       </div>
     );
   }

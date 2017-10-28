@@ -1,0 +1,10 @@
+.month-bar {
+  display: flex;
+  font-size: 45px;
+  margin-left: 6px;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-around;
+}
