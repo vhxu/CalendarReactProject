@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatesContainer from './dates_container';
 import Dates from './dates';
+import ListContainer from './list_container';
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var monthNumber = new Date().getMonth();
@@ -21,17 +22,10 @@ class MonthBar extends Component {
 
 
   componentDidMount () {
-    for (var i = 1; i <= this.totalDays(); i++) {
-
-      datesArray.push({
-        day: i
-      });
-    }
     this.setState({
       month: this.selectMonth(monthNumber),
       year: new Date().getFullYear(),
       totalDays: this.totalDays(),
-      days: datesArray
     })
 
   }
@@ -92,14 +86,19 @@ class MonthBar extends Component {
     // var data = (this.state.days) ? this.state.days : [];
 
     return(
-      <div>
-        <div className='month-bar'>
-          <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
-          <div style={{color:'red'}}>{this.state.month} {this.state.year}</div>
-          <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
+      <div className='app-container'>
+        <div className='calendar-container'>
+          <div className='month-bar'>
+            <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
+            <div style={{color:'red'}}>{this.state.month} {this.state.year}</div>
+            <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
+          </div>
+          <DatesContainer />
+          <Dates totalDays = {this.state.totalDays} />
         </div>
-        <DatesContainer />
-        <Dates totalDays = {this.state.totalDays} days = {this.state.days} />
+        <div className='list-container'>
+          <ListContainer />
+        </div>
       </div>
     );
   }

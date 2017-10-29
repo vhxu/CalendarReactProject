@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 //ARRAY IS EMPTY. RETURNING UNDEFINED
 // var datesArray= [];
 // class Dates extends Component {
@@ -25,32 +25,36 @@ import React, { Component } from 'react';
 // }
 
  const Dates = (props) => {
-//   var datesArray= [];
-//
-//   for (var i = 1; i <= props.days; i++) {
-//     datesArray.push({
-//       day: i
-//     });
-//   }
-//
-//   if (datesArray.length < 1) {
-//     console.log('im here');
-//   }
-//   else {
-//     console.log('now im here');
-//   }
+  var datesArray= [];
+  for (var i = 1; i <= props.totalDays; i++) {
+    datesArray.push({
+      day: i
+    });
+  }
 
-  // if (!datesArray) {
-  //   return <div>hi</div>
-  // }
+  if (datesArray.length < 1) {
+    console.log('im here');
+  }
+  else {
+    console.log('now im here');
+  }
 
-  return (
-    <div>
-      <div>{props.totalDays}</div>
-      <div>{console.log(props.days)}</div>
-      <div></div>
-    </div>
-  );
+
+
+    if (datesArray.length === props.totalDays) {
+      return (
+      <div>
+        <div>{props.totalDays}</div>
+        <div>{console.log(datesArray[0].day)}</div>
+        <div></div>
+      </div>
+      );
+    }
+    else {
+      return null;
+    }
+
+
 };
 //
 export default Dates;
