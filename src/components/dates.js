@@ -1,30 +1,8 @@
 import React from 'react';
-//ARRAY IS EMPTY. RETURNING UNDEFINED
-// var datesArray= [];
-// class Dates extends Component {
-//
-//
-//   if (datesArray.length < 1) {
-//     for (var i = 1; i <= this.props.days; i++) {
-//       datesArray.push({
-//         day: i
-//       });
-//       console.log('hi');
-//     }
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//         <div>{this.props.days}</div>
-//         <div>{console.log(datesArray)}</div>
-//         <div>{datesArray[0].day}</div>
-//       </div>
-//     );
-//   }
-// }
 
  const Dates = (props) => {
+  var firstDay = new Date(props.year, props.month, 1).getDay();
+  var lastDay = new Date(props.year, props.month + 1, 0).getDay();
   var datesArray= [];
   for (var i = 1; i <= props.totalDays; i++) {
     datesArray.push({
@@ -32,29 +10,32 @@ import React from 'react';
     });
   }
 
-  if (datesArray.length < 1) {
-    console.log('im here');
-  }
-  else {
-    console.log('now im here');
-  }
-
-
-
-    if (datesArray.length === props.totalDays) {
+  if (datesArray.length === props.totalDays) {
+    const dateGrid = datesArray.map((day) => {
       return (
-      <div>
-        <div>{props.totalDays}</div>
-        <div>{console.log(datesArray[0].day)}</div>
-        <div></div>
-      </div>
+        <div className='day' key={day.day}>{day.day}</div>
       );
+    });
+    if (firstDay > 0) {
+      for (var i = 0; i < firstDay; i++) {
+        dateGrid.unshift(<div className='day gray' key={-i}>{new Date(props.year, props.month, -i).getDate()}</div>)
+      }
     }
+    if (lastDay < 6) {
+      for (var j = 1; j <= 6-lastDay; j++) {
+        dateGrid.push(<div className='day gray' key={'next'+j}>{new Date(props.year, props.month + 1, j).getDate()}</div>)
+      }
+    }
+    return (
+    <div className='day-container'>
+      {dateGrid}
+      {console.log(dateGrid)}
+    </div>
+    );
+  }
     else {
       return null;
     }
-
-
 };
-//
+
 export default Dates;

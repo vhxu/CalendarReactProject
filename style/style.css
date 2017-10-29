@@ -3,7 +3,7 @@
 }
 
 .calendar-container {
-    flex-basis: 67%;
+  flex-basis: 67%;
 }
 
 .list-container {
@@ -19,4 +19,18 @@
 .dates {
   display: flex;
   justify-content: space-around;
+}
+
+.day-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.day {
+  flex-basis: 14.28%;
+}
+
+.gray {
+  color: gray;
 }

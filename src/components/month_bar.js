@@ -16,7 +16,6 @@ class MonthBar extends Component {
       month: "",
       year: "",
       totalDays: "",
-      daysArray:[]
     };
   }
 
@@ -94,7 +93,7 @@ class MonthBar extends Component {
             <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
           </div>
           <DatesContainer />
-          <Dates totalDays = {this.state.totalDays} />
+          <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year}/>
         </div>
         <div className='list-container'>
           <ListContainer />
