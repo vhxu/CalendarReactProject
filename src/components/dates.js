@@ -12,9 +12,16 @@ import React from 'react';
 
   if (datesArray.length === props.totalDays) {
     const dateGrid = datesArray.map((day) => {
-      return (
-        <div className='day' key={day.day}>{day.day}</div>
-      );
+      if (day.day === props.currentDay && props.month === new Date().getMonth()) {
+        return (
+          <div className='day today' key={day.day}>{day.day}</div>
+        );
+      }
+      else {
+        return (
+          <div className='day' key={day.day}>{day.day}</div>
+        );
+      }
     });
     if (firstDay > 0) {
       for (var i = 0; i < firstDay; i++) {
@@ -22,14 +29,13 @@ import React from 'react';
       }
     }
     if (lastDay < 6) {
-      for (var j = 1; j <= 6-lastDay; j++) {
-        dateGrid.push(<div className='day gray' key={'next'+j}>{new Date(props.year, props.month + 1, j).getDate()}</div>)
+      for (var i = 1; i <= 6-lastDay; i++) {
+        dateGrid.push(<div className='day gray' key={'next'+i}>{new Date(props.year, props.month + 1, i).getDate()}</div>)
       }
     }
     return (
     <div className='day-container'>
       {dateGrid}
-      {console.log(dateGrid)}
     </div>
     );
   }

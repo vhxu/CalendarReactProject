@@ -1,9 +1,19 @@
+body{
+  margin: 0 auto 0 auto;
+}
 .app-container {
+  font-family: 'Roboto', sans-serif;
+  background-color: #3dceff;
+}
+
+.calendar-list {
   display: flex;
 }
 
 .calendar-container {
   flex-basis: 67%;
+  color: white;
+
 }
 
 .list-container {
@@ -14,21 +24,35 @@
   display: flex;
   font-size: 45px;
   margin-left: 6px;
+  color: white;
 }
 
 .dates {
   display: flex;
   justify-content: space-around;
+  margin-left: 3px;
+  margin-right: 4px;
+  padding-right: 8px;
 }
+
 
 .day-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
 }
 
 .day {
-  flex-basis: 14.28%;
+  flex-basis: 14.1%;
+  height: 80px;
+  outline: 1px solid black;
+  margin: 0 1px 1px 0;
+  font-size: 20px;
+}
+
+.today {
+  color: red;
 }
 
 .gray {

@@ -15,7 +15,8 @@ class MonthBar extends Component {
     this.state = {
       month: "",
       year: "",
-      totalDays: "",
+      currentDay: "",
+      totalDays: ""
     };
   }
 
@@ -24,7 +25,8 @@ class MonthBar extends Component {
     this.setState({
       month: this.selectMonth(monthNumber),
       year: new Date().getFullYear(),
-      totalDays: this.totalDays(),
+      currentDay: new Date().getDate(),
+      totalDays: this.totalDays()
     })
 
   }
@@ -86,17 +88,19 @@ class MonthBar extends Component {
 
     return(
       <div className='app-container'>
-        <div className='calendar-container'>
-          <div className='month-bar'>
-            <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
-            <div style={{color:'red'}}>{this.state.month} {this.state.year}</div>
-            <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
-          </div>
-          <DatesContainer />
-          <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year}/>
+        <div className='month-bar'>
+          <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
+          <div>{this.state.month} {this.state.year}</div>
+          <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
         </div>
-        <div className='list-container'>
-          <ListContainer />
+        <div className='calendar-list'>
+          <div className='calendar-container'>
+            <DatesContainer />
+            <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year} currentDay={this.state.currentDay}/>
+          </div>
+          <div className='list-container'>
+            <ListContainer />
+          </div>
         </div>
       </div>
     );
