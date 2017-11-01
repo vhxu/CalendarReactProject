@@ -16,8 +16,10 @@ class MonthBar extends Component {
       month: "",
       year: "",
       currentDay: "",
-      totalDays: ""
+      totalDays: "",
+      selectedDay: ""
     };
+    this.selectDay = this.selectDay.bind(this);
   }
 
 
@@ -26,7 +28,8 @@ class MonthBar extends Component {
       month: this.selectMonth(monthNumber),
       year: new Date().getFullYear(),
       currentDay: new Date().getDate(),
-      totalDays: this.totalDays()
+      totalDays: this.totalDays(),
+      selectedDay: new Date().getDate()
     })
 
   }
@@ -78,6 +81,13 @@ class MonthBar extends Component {
     }
   }
 
+  selectDay(e) {
+    this.setState({
+      selectedDay: e
+    })
+    console.log(e);
+  }
+
   render() {
 
     return(
@@ -89,10 +99,10 @@ class MonthBar extends Component {
             <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
           </div>
             <DatesContainer />
-            <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year} currentDay={this.state.currentDay}/>
+            <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
         </div>
         <div className='list-container'>
-            <ListContainer month={this.state.month} currentDay={this.state.currentDay} year={this.state.year}/>
+            <ListContainer month={this.state.month} selectedDay={this.state.selectedDay} year={this.state.year}/>
         </div>
       </div>
     );
