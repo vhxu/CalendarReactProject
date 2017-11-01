@@ -4,11 +4,9 @@ body{
 .app-container {
   font-family: 'Roboto', sans-serif;
   background-color: #3dceff;
+  display:flex;
 }
 
-.calendar-list {
-  display: flex;
-}
 
 .calendar-container {
   flex-basis: 67%;
@@ -18,13 +16,22 @@ body{
 
 .list-container {
   flex-basis: 33%;
+  background-color: white;
 }
+
+.list-date {
+  display: flex;
+  justify-content: center;
+}
+
+
 
 .month-bar {
   display: flex;
   font-size: 45px;
   margin-left: 6px;
   color: white;
+  justify-content: space-between;
 }
 
 .dates {

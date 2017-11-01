@@ -79,28 +79,20 @@ class MonthBar extends Component {
   }
 
   render() {
-    // if (this.state.days != []) {
-    //   var datesComponent = <Dates totalDays = {this.state.totalDays} days = {this.state.days} />
-    // } else {
-    //   var datesComponent = null;
-    // }
-    // var data = (this.state.days) ? this.state.days : [];
 
     return(
       <div className='app-container'>
-        <div className='month-bar'>
-          <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
-          <div>{this.state.month} {this.state.year}</div>
-          <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
-        </div>
-        <div className='calendar-list'>
-          <div className='calendar-container'>
+        <div className='calendar-container'>
+          <div className='month-bar'>
+            <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
+            <div>{this.state.month} {this.state.year}</div>
+            <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
+          </div>
             <DatesContainer />
             <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year} currentDay={this.state.currentDay}/>
-          </div>
-          <div className='list-container'>
-            <ListContainer />
-          </div>
+        </div>
+        <div className='list-container'>
+            <ListContainer month={this.state.month} currentDay={this.state.currentDay} year={this.state.year}/>
         </div>
       </div>
     );

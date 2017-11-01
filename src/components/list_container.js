@@ -1,9 +1,12 @@
 import React from 'react';
 
-const ListContainer = () => {
+const ListContainer = (props) => {
 
     return (
-      <div>Hi from ListContainer</div>
+      <div className='list-date'>
+        <div>{props.month} {props.currentDay}, {props.year}</div>
+      </div>
+
     );
 };
 
