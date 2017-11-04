@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-
+import DatesContainer from './dates_container';
+import ListContainer from './list_container';
+import List from './list';
 class Dates extends Component {
 
   // selectDay (day) {
@@ -50,9 +52,19 @@ class Dates extends Component {
         }
       }
       return (
-      <div className='day-container'>
-        {dateGrid}
+      <div className='dates-list'>
+        <div className='dates-container'>
+          <DatesContainer />
+          <div className='day-container'>
+            {dateGrid}
+          </div>
+        </div>
+        <div className='list-container'>
+            <ListContainer month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
+            <List />
+        </div>
       </div>
+
       );
     }
       else {

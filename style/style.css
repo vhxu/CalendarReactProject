@@ -9,35 +9,42 @@ body{
 
 
 .calendar-container {
-  flex-basis: 67%;
-  color: white;
+
 
 }
 
 .list-container {
   flex-basis: 33%;
-  background-color: white;
+  background-color: grey;
+  padding-left: 10px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
 }
 
 .list-add {
-  display:flex;
-  justify-content: flex-end;
   padding-right: 5px;
 }
 
 .list-date {
-  display: flex;
-  justify-content: center;
-}
 
+}
 
 
 .month-bar {
   display: flex;
   font-size: 45px;
-  margin-left: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
   color: white;
   justify-content: space-between;
+  flex-basis: 67%;
+}
+
+.dates-section {
+  background-color: #3dceff;
 }
 
 .dates {
@@ -46,14 +53,21 @@ body{
   margin-left: 3px;
   margin-right: 4px;
   padding-right: 8px;
+  flex-basis: 67%;
 }
 
+.dates-list {
+  display: flex;
+}
+
+.dates-container {
+  flex-basis: 67%;
+}
 
 .day-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 }
 
 .day {

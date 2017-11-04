@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import DatesContainer from './dates_container';
+
 import Dates from './dates';
-import ListContainer from './list_container';
+
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var monthNumber = new Date().getMonth();
 var yearNumber = 0;
-var datesArray = [];
 
 class MonthBar extends Component {
   constructor(props) {
@@ -91,18 +90,16 @@ class MonthBar extends Component {
   render() {
 
     return(
-      <div className='app-container'>
-        <div className='calendar-container'>
+      <div>
+        <div className='app-container'>
           <div className='month-bar'>
             <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
             <div>{this.state.month} {this.state.year}</div>
             <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
           </div>
-            <DatesContainer />
-            <Dates totalDays={this.state.totalDays} month={monthNumber} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
         </div>
-        <div className='list-container'>
-            <ListContainer month={this.state.month} selectedDay={this.state.selectedDay} year={this.state.year}/>
+        <div className='dates-section'>
+          <Dates totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
         </div>
       </div>
     );
