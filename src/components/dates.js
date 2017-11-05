@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import DatesContainer from './dates_container';
 import ListContainer from './list_container';
-import List from './list';
 class Dates extends Component {
 
   // selectDay (day) {
@@ -61,7 +60,6 @@ class Dates extends Component {
         </div>
         <div className='list-container'>
             <ListContainer month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
-            <List />
         </div>
       </div>
 
