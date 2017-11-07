@@ -3,22 +3,23 @@ import DatesContainer from './dates_container';
 import ListContainer from './list_container';
 class Dates extends Component {
 
-  // selectDay (day) {
-  //   console.log('youve selected this day', day);
+  // addTask() {
+  //   this.props.datesArray[this.props.selectedDay-1].task = 'testtest';
+  //   console.log(this.props.datesArray[this.props.selectedDay-1]);
   // }
 
   render() {
     var firstDay = new Date(this.props.year, this.props.month, 1).getDay();
     var lastDay = new Date(this.props.year, this.props.month + 1, 0).getDay();
-    var datesArray= [];
+    // var datesArray= [];
     for (var i = 1; i <= this.props.totalDays; i++) {
-      datesArray.push({
+      this.props.datesArray.push({
         day: i
       });
     }
 
-    if (datesArray.length === this.props.totalDays) {
-      const dateGrid = datesArray.map((day) => {
+    if (this.props.datesArray.length === this.props.totalDays) {
+      const dateGrid = this.props.datesArray.map((day) => {
         if (day.day === this.props.selectedDay && day.day === this.props.currentDay) {
           return (
             <div className='day selected today' key={day.day}>{day.day}</div>
@@ -35,6 +36,7 @@ class Dates extends Component {
           );
         }
         else {
+
           return (
             <div className='day' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
           );
@@ -59,7 +61,7 @@ class Dates extends Component {
           </div>
         </div>
         <div className='list-container'>
-            <ListContainer month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
+            <ListContainer task = {this.addTask} month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
         </div>
       </div>
 

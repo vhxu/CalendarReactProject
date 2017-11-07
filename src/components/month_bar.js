@@ -16,7 +16,8 @@ class MonthBar extends Component {
       year: "",
       currentDay: "",
       totalDays: "",
-      selectedDay: ""
+      selectedDay: "",
+      datesArray: ""
     };
     this.selectDay = this.selectDay.bind(this);
   }
@@ -28,7 +29,8 @@ class MonthBar extends Component {
       year: new Date().getFullYear(),
       currentDay: new Date().getDate(),
       totalDays: this.totalDays(),
-      selectedDay: new Date().getDate()
+      selectedDay: new Date().getDate(),
+      datesArray: []
     })
 
   }
@@ -82,7 +84,8 @@ class MonthBar extends Component {
 
   selectDay(e) {
     this.setState({
-      selectedDay: e
+      selectedDay: e,
+      datesArray: []
     })
     console.log(e);
   }
@@ -99,7 +102,7 @@ class MonthBar extends Component {
           </div>
         </div>
         <div className='dates-section'>
-          <Dates totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
+          <Dates datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
         </div>
       </div>
     );

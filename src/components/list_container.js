@@ -3,9 +3,21 @@ import React, {Component} from 'react';
 class ListContainer extends Component {
 
   createInputs() {
-    document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));
-    document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));
-    document.querySelector('.list-of-stuff').appendChild(document.createElement("div")).innerHTML = 'Add';
+    var timeInput = document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));
+    timeInput.setAttribute('placeholder', 'time');
+    timeInput.setAttribute('id', 'time');
+    var taskInput = document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));
+    taskInput.setAttribute('placeholder', 'task');
+    taskInput.setAttribute('id', 'task');
+    var addButton = document.querySelector('.list-of-stuff').appendChild(document.createElement("div"));
+    addButton.innerHTML = 'Add';
+    addButton.onclick = this.test;
+  }
+
+  test() {
+    console.log('hi');
+    var input = document.getElementById("time").value;
+    console.log(input);
   }
 
   render() {
