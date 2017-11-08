@@ -3,10 +3,6 @@ import DatesContainer from './dates_container';
 import ListContainer from './list_container';
 class Dates extends Component {
 
-  // addTask() {
-  //   this.props.datesArray[this.props.selectedDay-1].task = 'testtest';
-  //   console.log(this.props.datesArray[this.props.selectedDay-1]);
-  // }
 
   render() {
     var firstDay = new Date(this.props.year, this.props.month, 1).getDay();
@@ -61,7 +57,7 @@ class Dates extends Component {
           </div>
         </div>
         <div className='list-container'>
-            <ListContainer task = {this.addTask} month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
+            <ListContainer month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
         </div>
       </div>
 

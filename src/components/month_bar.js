@@ -35,6 +35,16 @@ class MonthBar extends Component {
 
   }
 
+  // makeDateArray() {
+  //   var datesArray= [];
+  //   for (var i = 1; i <= this.totalDays(); i++) {
+  //     datesArray.push({
+  //       day: i
+  //     });
+  //   }
+  //   return datesArray
+  // }
+
   selectMonth(month) {
     return(
       monthNames[month]
@@ -51,6 +61,7 @@ class MonthBar extends Component {
       this.setState({
         month: this.selectMonth(monthNumber),
         totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate(),
+        datesArray: []
       })
     }
     else {
@@ -59,7 +70,8 @@ class MonthBar extends Component {
       this.setState({
         month: this.selectMonth(monthNumber),
         year: this.state.year - 1,
-        totalDays: new Date(this.state.year - 1, monthNumber + 1, 0).getDate()
+        totalDays: new Date(this.state.year - 1, monthNumber + 1, 0).getDate(),
+        datesArray: []
       })
     }
   }
@@ -69,7 +81,8 @@ class MonthBar extends Component {
       monthNumber += 1
       this.setState({
         month: this.selectMonth(monthNumber),
-        totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate()
+        totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate(),
+        datesArray: []
       })
     }
     else {
@@ -77,7 +90,8 @@ class MonthBar extends Component {
       this.setState({
         month: this.selectMonth(monthNumber),
         year: this.state.year + 1,
-        totalDays: new Date(this.state.year + 1, monthNumber + 1, 0).getDate()
+        totalDays: new Date(this.state.year + 1, monthNumber + 1, 0).getDate(),
+        datesArray: []
       })
     }
   }
@@ -87,8 +101,8 @@ class MonthBar extends Component {
       selectedDay: e,
       datesArray: []
     })
-    console.log(e);
   }
+
 
   render() {
 
