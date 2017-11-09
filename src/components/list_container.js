@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+var tasksObjectArray = [];
 var tasksArray = [];
 class ListContainer extends Component {
 
@@ -21,26 +22,37 @@ class ListContainer extends Component {
     var timeInput = document.getElementById("time").value;
     var taskInput = document.getElementById("task").value;
     var taskObject = {date: this.props.month+" "+this.props.selectedDay+", "+this.props.year, time: timeInput, task: taskInput};
-    tasksArray.push(taskObject);
+    tasksObjectArray.push(taskObject);
     document.getElementById("time").remove();
     document.getElementById("task").remove();
     document.getElementById("add").remove();
+    var plusButton = document.querySelector('.list').appendChild(document.createElement("div"));
+    plusButton.setAttribute('id', 'plusButton');
+    plusButton.className = 'list-add';
+    plusButton.innerHTML = '+';
+    plusButton.onclick = this.createInputs.bind(this);
+    console.log(tasksObjectArray);
+    for (var i=0; i < tasksObjectArray.length; i++) {
+      var time = document.getElementById('test').appendChild(document.createElement("li"));
+      time.innerHTML = tasksObjectArray[i].time;
+      var task = document.getElementById('test').appendChild(document.createElement("li"));
+      task.innerHTML = tasksObjectArray[i].task;
+    }
+    //FIGURE OUT HOW TO PUT TIMES IN ORDER AND GET RID OF REPEATED TASKS WHEN ADDING MORE
+
     this.render();
   }
 
   render() {
 
-    if (tasksArray.length > 0) {
-      console.log('hi')
-      var tasksList = tasksArray.map((task) => {
-        return (
-          <div>
-            <div className='time' key={task.task} >{task.time}</div>
-
-          </div>
-        )
-      });
-    }
+    // if (tasksObjectArray.length > 0) {
+    //   console.log('hi')
+    //   var tasksList = tasksObjectArray.map((task) => {
+    //     console.log(task.time);
+    //     <div className='time' key={task.task}>{task.time}</div>
+    //
+    //   });
+    // }
 
 
     return (
@@ -49,9 +61,9 @@ class ListContainer extends Component {
           <div className='list-date'>{this.props.month} {this.props.selectedDay}, {this.props.year}</div>
           <div id='plusButton' className='list-add' onClick={this.createInputs.bind(this)}>+</div>
         </div>
-        <div className='list-of-stuff'></div>
-        {tasksList}
-
+        <div className='list-of-stuff'>
+          <ul id='test'></ul>
+        </div>
       </div>
     );
   }
