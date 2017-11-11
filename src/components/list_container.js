@@ -22,7 +22,6 @@ class ListContainer extends Component {
   }
 
   inputInfo() {
-
     var timeInput = document.getElementById("time").value;
     var taskInput = document.getElementById("task").value;
     var splitTime = timeInput.split(':');
@@ -40,19 +39,8 @@ class ListContainer extends Component {
     plusButton.innerHTML = '+';
     plusButton.onclick = this.createInputs.bind(this);
     this.showInfo();
-    // tasksObjectArray.sort(function(a, b) {return a.minutes-b.minutes});
-    // console.log(tasksObjectArray);
-    // for (var i=0; i < tasksObjectArray.length; i++) {
-    //   if (tasksObjectArray[i].date === this.props.month+" "+this.props.selectedDay+", "+this.props.year) {
-    //   var time = document.getElementById('test').appendChild(document.createElement("li"));
-    //   time.innerHTML = tasksObjectArray[i].time;
-    //   var task = document.getElementById('test').appendChild(document.createElement("li"));
-    //   task.innerHTML = tasksObjectArray[i].task;
-    //   }
-    // }
   }
 
-  //REF IS BEING CALLED SAME TIME SELECTEDDAY IS UPDATED SO IT IS ALWAYS ONE STEP BEHIND. POSSIBLY REF THROUGH TWO CHILDREN
   showInfo() {
     document.getElementById('test').innerHTML = '';
     tasksObjectArray.sort(function(a, b) {return a.minutes-b.minutes});
@@ -61,13 +49,14 @@ class ListContainer extends Component {
       if (tasksObjectArray[i].date === this.props.month+" "+this.props.selectedDay+", "+this.props.year) {
       var time = document.getElementById('test').appendChild(document.createElement("li"));
       time.innerHTML = tasksObjectArray[i].time;
+      time.className = 'list-time';
       var task = document.getElementById('test').appendChild(document.createElement("li"));
       task.innerHTML = tasksObjectArray[i].task;
+      task.className = 'list-task';
       }
 
     }
   }
-
 
   render() {
 

@@ -89,3 +89,11 @@ body{
 .gray {
   color: gray;
 }
+
+.list-time {
+  font-size: 20px;
+}
+
+.list-task {
+  list-style: none;
+}

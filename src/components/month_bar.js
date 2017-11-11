@@ -22,7 +22,6 @@ class MonthBar extends Component {
     this.selectDay = this.selectDay.bind(this);
   }
 
-
   componentDidMount () {
     this.setState({
       month: this.selectMonth(monthNumber),
@@ -34,16 +33,6 @@ class MonthBar extends Component {
     })
 
   }
-
-  // makeDateArray() {
-  //   var datesArray= [];
-  //   for (var i = 1; i <= this.totalDays(); i++) {
-  //     datesArray.push({
-  //       day: i
-  //     });
-  //   }
-  //   return datesArray
-  // }
 
   selectMonth(month) {
     return(
@@ -102,7 +91,6 @@ class MonthBar extends Component {
       datesArray: []
     })
   }
-
 
   render() {
 

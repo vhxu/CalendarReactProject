@@ -7,7 +7,6 @@ class Dates extends Component {
   render() {
     var firstDay = new Date(this.props.year, this.props.month, 1).getDay();
     var lastDay = new Date(this.props.year, this.props.month + 1, 0).getDay();
-    // var datesArray= [];
     for (var i = 1; i <= this.props.totalDays; i++) {
       this.props.datesArray.push({
         day: i
@@ -16,7 +15,7 @@ class Dates extends Component {
 
     if (this.props.datesArray.length === this.props.totalDays) {
       const dateGrid = this.props.datesArray.map((day) => {
-        if (day.day === this.props.selectedDay && day.day === this.props.currentDay) {
+        if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
             <div className='day selected today' key={day.day}>{day.day}</div>
           )
