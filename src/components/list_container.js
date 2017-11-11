@@ -3,6 +3,10 @@ import React, {Component} from 'react';
 var tasksObjectArray = [];
 class ListContainer extends Component {
 
+  componentDidUpdate() {
+      this.showInfo();
+  }
+
   createInputs() {
     document.getElementById('plusButton').remove();
     var timeInput = document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));

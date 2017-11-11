@@ -28,13 +28,13 @@ class Dates extends Component {
         }
         else if (day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
-            <div className='day today' onClick={() => {this.props.selectDay(day.day); this.refs.child.showInfo()}} key={day.day}>{day.day}</div>
+            <div className='day today' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
           );
         }
         else {
 
           return (
-            <div className='day' onClick={() => {this.props.selectDay(day.day); this.refs.child.showInfo()}} key={day.day}>{day.day}</div>
+            <div className='day' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
           );
         }
       });
@@ -57,7 +57,7 @@ class Dates extends Component {
           </div>
         </div>
         <div className='list-container'>
-            <ListContainer ref="child" month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
+            <ListContainer month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
         </div>
       </div>
 
