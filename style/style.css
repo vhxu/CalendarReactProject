@@ -3,13 +3,11 @@ body{
 }
 .app-container {
   font-family: 'Roboto', sans-serif;
-  background-color: #3dceff;
   display:flex;
 }
 
 .list-container {
   flex-basis: 33%;
-  background-color: grey;
   padding-left: 10px;
 }
 
@@ -26,14 +24,13 @@ body{
   display: flex;
   font-size: 45px;
   padding-left: 6px;
-  padding-right: 6px;
-  color: white;
+  margin-right: 6px;
   justify-content: space-between;
   flex-basis: 67%;
 }
 
 .dates-section {
-  background-color: #3dceff;
+
 }
 
 .dates {
