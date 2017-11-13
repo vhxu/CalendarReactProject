@@ -93,36 +93,6 @@ class App extends Component {
       datesArray: []
     })
   }
-  // createInputs() {
-  //   document.getElementById('plusButton').remove();
-  //   var timeInput = document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));
-  //   timeInput.setAttribute('placeholder', 'time');
-  //   timeInput.setAttribute('id', 'time');
-  //   var taskInput = document.querySelector('.list-of-stuff').appendChild(document.createElement("input"));
-  //   taskInput.setAttribute('placeholder', 'task');
-  //   taskInput.setAttribute('id', 'task');
-  //   var addButton = document.querySelector('.list-of-stuff').appendChild(document.createElement("div"));
-  //   addButton.setAttribute('id', 'add');
-  //   addButton.innerHTML = 'Add';
-  //   addButton.onclick = this.inputInfo.bind(this);
-  // }
-  //
-  // inputInfo() {
-  //   var timeInput = document.getElementById("time").value;
-  //   var taskInput = document.getElementById("task").value;
-  //   var splitTime = timeInput.split(':');
-  //   var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
-  //   var taskObject = {date: this.props.month+" "+this.props.selectedDay+", "+this.props.year, time: timeInput, minutes: convertToMinutes, task: taskInput};
-  //   tasksObjectArray.push(taskObject);
-  //   document.getElementById("time").remove();
-  //   document.getElementById("task").remove();
-  //   document.getElementById("add").remove();
-  //   var plusButton = document.querySelector('.list').appendChild(document.createElement("div"));
-  //   plusButton.setAttribute('id', 'plusButton');
-  //   plusButton.className = 'list-add';
-  //   plusButton.innerHTML = '+';
-  //   plusButton.onclick = this.createInputs.bind(this);
-  // }
 
   createInputs() {
     console.log('pushed');
@@ -153,7 +123,7 @@ class App extends Component {
     document.getElementById("time").remove();
     document.getElementById("task").remove();
     document.getElementById("add").remove();
-    var plusButton = document.querySelector('.month-bar').appendChild(document.createElement("div"));
+    var plusButton = document.querySelector('.app-container').appendChild(document.createElement("div"));
     plusButton.setAttribute('id', 'plus');
     plusButton.innerHTML = '+';
     plusButton.onclick = this.createInputs.bind(this);
@@ -173,7 +143,7 @@ class App extends Component {
           <div className='inputs'></div>
         </div>
         <div className='dates-section'>
-          <Dates datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
+          <Dates tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
         </div>
       </div>
     );
