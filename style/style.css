@@ -7,12 +7,6 @@ body{
   display:flex;
 }
 
-
-.calendar-container {
-
-
-}
-
 .list-container {
   flex-basis: 33%;
   background-color: grey;
@@ -27,11 +21,6 @@ body{
 .list-add {
   padding-right: 5px;
 }
-
-.list-date {
-
-}
-
 
 .month-bar {
   display: flex;

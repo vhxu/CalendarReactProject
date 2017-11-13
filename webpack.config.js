@@ -10,14 +10,26 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-      loaders: [{
-        exclude: /node_modules/,
-        test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'stage-1', 'env']
-        }
-      }]
+      rules: [
+        {
+          exclude: /node_modules/,
+          test: /\.js$/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['react', 'stage-1', 'env']
+          }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "sass-loader",
+        }]
+      }
+    ]
   },
   devServer: {
   historyApiFallback: true,

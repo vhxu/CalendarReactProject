@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 var tasksObjectArray = [];
 class ListContainer extends Component {
 
-  componentDidUpdate() {
-      this.showInfo();
-  }
+  // componentDidUpdate() {
+  //     this.showInfo();
+  // }
 
   createInputs() {
     document.getElementById('plusButton').remove();
@@ -26,8 +26,6 @@ class ListContainer extends Component {
     var taskInput = document.getElementById("task").value;
     var splitTime = timeInput.split(':');
     var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
-    console.log(splitTime);
-    console.log(convertToMinutes);
     var taskObject = {date: this.props.month+" "+this.props.selectedDay+", "+this.props.year, time: timeInput, minutes: convertToMinutes, task: taskInput};
     tasksObjectArray.push(taskObject);
     document.getElementById("time").remove();
@@ -38,25 +36,38 @@ class ListContainer extends Component {
     plusButton.className = 'list-add';
     plusButton.innerHTML = '+';
     plusButton.onclick = this.createInputs.bind(this);
-    this.showInfo();
   }
 
   showInfo() {
-    document.getElementById('test').innerHTML = '';
-    tasksObjectArray.sort(function(a, b) {return a.minutes-b.minutes});
-    console.log(tasksObjectArray);
-    for (var i=0; i < tasksObjectArray.length; i++) {
-      if (tasksObjectArray[i].date === this.props.month+" "+this.props.selectedDay+", "+this.props.year) {
-      var time = document.getElementById('test').appendChild(document.createElement("li"));
-      time.innerHTML = tasksObjectArray[i].time;
-      time.className = 'list-time';
-      var task = document.getElementById('test').appendChild(document.createElement("li"));
-      task.innerHTML = tasksObjectArray[i].task;
-      task.className = 'list-task';
-      }
-
+    var filteredTasksArray = tasksObjectArray.filter(task => task.date === this.props.month+" "+this.props.selectedDay+", "+this.props.year);
+    filteredTasksArray.sort((a,b) => {return a.minutes-b.minutes});
+    console.log(filteredTasksArray);
+    for (var i=0; i < filteredTasksArray.length; i++) {
+      return (
+        <div>
+          <div>{filteredTasksArray[i].time}</div>
+          <div>{filteredTasksArray[i].task}</div>
+        </div>
+      )
     }
   }
+
+  // showInfo() {
+  //   document.getElementById('test').innerHTML = '';
+  //   tasksObjectArray.sort(function(a, b) {return a.minutes-b.minutes});
+  //   for (var i=0; i < tasksObjectArray.length; i++) {
+  //     if (tasksObjectArray[i].date === this.props.month+" "+this.props.selectedDay+", "+this.props.year) {
+  //     var time = document.getElementById('test').appendChild(document.createElement("li"));
+  //     time.innerHTML = tasksObjectArray[i].time;
+  //     time.className = 'list-time';
+  //     var task = document.getElementById('test').appendChild(document.createElement("li"));
+  //     task.innerHTML = tasksObjectArray[i].task;
+  //     task.className = 'list-task';
+  //     }
+  //   }
+  // }
+
+
 
   render() {
 
@@ -68,6 +79,7 @@ class ListContainer extends Component {
         </div>
         <div className='list-of-stuff'>
           <ul id='test'></ul>
+          {this.showInfo()}
         </div>
       </div>
     );
