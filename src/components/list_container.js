@@ -15,10 +15,11 @@ class ListContainer extends Component {
         <div className='list-of-stuff'>
           {filteredTasksArray.map((task, i) => {
             return (
-              <ul key={i}>
-                <li style={{ color:colors[i]}}>{task.time}</li>
-                <div>{task.task}</div>
-              </ul>
+              <div key={i}>
+                <div className='tasks'>{task.time} <li className='task-list'style={{ color:colors[i]}}>{task.task}</li></div>
+                <hr className="task-divider"></hr>
+              </div>
+
             )
           })}
         </div>
@@ -28,11 +29,3 @@ class ListContainer extends Component {
 };
 
 export default ListContainer;
-
-
-// return (
-//   <ul key={i}>
-//     <li style={{ color:colors[i]}}>{task.time}</li>
-//     <div>{task.task}</div>
-//   </ul>
-// )

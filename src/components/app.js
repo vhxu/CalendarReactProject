@@ -96,7 +96,7 @@ class App extends Component {
 
   createInputs() {
     console.log('pushed');
-    document.getElementById('plus').remove();
+    document.querySelector('.plus').remove();
     var timeInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
     timeInput.placeholder = 'time';
     timeInput.id = 'time';
@@ -124,7 +124,7 @@ class App extends Component {
     document.getElementById("task").remove();
     document.getElementById("add").remove();
     var plusButton = document.querySelector('.app-container').appendChild(document.createElement("div"));
-    plusButton.setAttribute('id', 'plus');
+    plusButton.className= 'plus';
     plusButton.innerHTML = '+';
     plusButton.onclick = this.createInputs.bind(this);
   }
@@ -139,8 +139,8 @@ class App extends Component {
             <div>{this.state.month} {this.state.year}</div>
             <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
           </div>
-          <div id='plus' onClick={this.createInputs.bind(this)}>+</div>
           <div className='inputs'></div>
+          <div className='plus' onClick={this.createInputs.bind(this)}>+</div>
         </div>
         <div className='dates-section'>
           <Dates tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>

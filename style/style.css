@@ -6,27 +6,43 @@ body{
   display:flex;
 }
 
-.list-container {
-  flex-basis: 33%;
-  padding-left: 10px;
-}
-
-.list {
-  display: flex;
-  justify-content: space-between;
-}
-
-.list-add {
-  padding-right: 5px;
-}
-
 .month-bar {
   display: flex;
   font-size: 45px;
   padding-left: 6px;
   margin-right: 6px;
-  justify-content: space-between;
   flex-basis: 67%;
+}
+
+.plus {
+  display: flex;
+  flex-basis: 33%;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 25px;
+}
+
+.inputs {
+  display: flex;
+  flex-basis: 33%;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-right: 10px;
+}
+
+.list-container {
+  flex-basis: 33%;
+
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+.list-add {
+  padding-right: 5px;
 }
 
 .dates-section {
@@ -48,24 +64,30 @@ body{
 
 .dates-container {
   flex-basis: 67%;
+  border-right: solid 1px grey;
 }
 
 .day-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+
 }
 
 .day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-basis: 14.1%;
-  height: 80px;
-  outline: 1px solid black;
+  height: 95px;
   margin: 0 1px 1px 0;
   font-size: 20px;
+
 }
 
 .selected {
-  outline-color: white;
+  border-radius: 100%;
+  background: yellow;
+
 }
 
 .today {
@@ -76,10 +98,27 @@ body{
   color: gray;
 }
 
-.list-time {
-  font-size: 20px;
+.list-date {
+  margin-bottom: 20px;
+  border-top: solid 1px grey;
+  border-bottom: solid 1px grey;
 }
 
-.list-task {
-  list-style: none;
+.list-of-stuff {
+  margin-left: 10px;
+}
+
+.tasks {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.task-list {
+  margin-left: 30px;
+}
+
+.task-divider {
+  color: grey;
+  margin-left: -10px;
+  margin-bottom: 20px;
 }
