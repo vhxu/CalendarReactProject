@@ -15,9 +15,9 @@ class ListContainer extends Component {
         <div className='list-of-stuff'>
           {filteredTasksArray.map((task, i) => {
             return (
-              <div key={i}>
+              <div className='list-item' key={i}>
                 <div className='tasks'>{task.time} <li className='task-list'style={{ color:colors[i]}}>{task.task}</li></div>
-                <hr className="task-divider"></hr>
+                
               </div>
 
             )

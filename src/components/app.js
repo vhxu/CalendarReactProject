@@ -135,9 +135,9 @@ class App extends Component {
       <div>
         <div className='app-container'>
           <div className='month-bar'>
-            <div onClick={this.handleLeftClick.bind(this)} >&#8810;</div>
+            <div className='left-click' onClick={this.handleLeftClick.bind(this)}></div>
             <div>{this.state.month} {this.state.year}</div>
-            <div onClick={this.handleRightClick.bind(this)}>&#8811;</div>
+            <div className='right-click' onClick={this.handleRightClick.bind(this)}></div>
           </div>
           <div className='inputs'></div>
           <div className='plus' onClick={this.createInputs.bind(this)}>+</div>
