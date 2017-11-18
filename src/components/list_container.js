@@ -6,7 +6,6 @@ class ListContainer extends Component {
     var colors = ['red', 'blue', 'green', 'yellow', 'purple'];
     var filteredTasksArray = this.props.tasksArray.filter(task => task.date === this.props.month+" "+this.props.selectedDay+", "+this.props.year);
     filteredTasksArray.sort((a,b) => {return a.minutes-b.minutes});
-    console.log(filteredTasksArray);
     return (
       <div>
         <div className='list'>
@@ -17,7 +16,7 @@ class ListContainer extends Component {
             return (
               <div className='list-item' key={i}>
                 <div className='tasks'>{task.time} <li className='task-list'style={{ color:colors[i]}}>{task.task}</li></div>
-                
+
               </div>
 
             )

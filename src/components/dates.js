@@ -7,37 +7,58 @@ class Dates extends Component {
   render() {
     var firstDay = new Date(this.props.year, this.props.month, 1).getDay();
     var lastDay = new Date(this.props.year, this.props.month + 1, 0).getDay();
-    for (var i = 1; i <= this.props.totalDays; i++) {
-      this.props.datesArray.push({
-        day: i
-      });
-    }
+    // for (var i = 1; i <= this.props.totalDays; i++) {
+    //   this.props.datesArray.push({
+    //     day: i,
+    //   });
+    // }
+
+
+//DOTS GO AWAY WHEN MONTH IS CHANGED
 
 
 
     if (this.props.datesArray.length === this.props.totalDays) {
+      if (this.props.tasksArray.length > 0){
+        var filterTasksArray = this.props.tasksArray.filter(task => task.date === this.props.monthName+" "+this.props.selectedDay+", "+this.props.year);
+        console.log(filterTasksArray);
+        for (var i = 0; i < filterTasksArray.length; i++) {
+          this.props.datesArray[filterTasksArray[i].day - 1].task = true;
+        }
+        console.log(this.props.datesArray);
+      }
       const dateGrid = this.props.datesArray.map((day) => {
-        var filterTasksArray = this.props.tasksArray.filter(tasks => tasks.date === this.props.month+" "+day.day+", "+this.props.year);
-        console.log(filterTasksArray[0]);
-        if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
+        if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth() && day.task === true) {
+          return (
+            <div className='day selected today dot' key={day.day}>{day.day}</div>
+          )
+        } else if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
             <div className='day selected today' key={day.day}>{day.day}</div>
           )
-        }
-        else if (day.day === this.props.selectedDay) {
+        } else if (day.day === this.props.selectedDay && day.task === true) {
+          return (
+            <div className='day selected dot' key={day.day}>{day.day}</div>
+          )
+        } else if (day.day === this.props.selectedDay) {
           return (
             <div className='day selected' key={day.day}>{day.day}</div>
           )
-        }
-        else if (day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
+        } else if (day.day === this.props.currentDay && this.props.month === new Date().getMonth() && day.task === true) {
+          return (
+            <div className='day today dot' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
+          )
+        } else if (day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
             <div className='day today' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
           );
-        }
-        else {
-
+        } else if (day.task === true) {
           return (
-            <div className='day test' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
+            <div className='day dot' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
+          )
+        } else {
+          return (
+            <div className='day' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
           );
         }
       });

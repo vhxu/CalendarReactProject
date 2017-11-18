@@ -30,7 +30,7 @@ class App extends Component {
       currentDay: new Date().getDate(),
       totalDays: this.totalDays(),
       selectedDay: new Date().getDate(),
-      datesArray: [],
+      datesArray: this.getDays(new Date(new Date().getFullYear(), monthNumber + 1, 0).getDate()),
       tasksArray: []
     })
 
@@ -42,7 +42,18 @@ class App extends Component {
     );
   }
 
-  totalDays() {
+  getDays(totalDays) {
+    var datesArray = [];
+    for (var i = 1; i <= totalDays; i++) {
+          datesArray.push({
+            day: i,
+            task: false
+          });
+        }
+    return datesArray;
+  }
+
+  totalDays(year, month) {
     return new Date(new Date().getFullYear(), monthNumber + 1, 0).getDate()
   }
 
@@ -52,7 +63,8 @@ class App extends Component {
       this.setState({
         month: this.selectMonth(monthNumber),
         totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate(),
-        datesArray: []
+        datesArray: this.getDays(new Date(this.state.year, monthNumber + 1, 0).getDate())
+
       })
     }
     else {
@@ -62,7 +74,7 @@ class App extends Component {
         month: this.selectMonth(monthNumber),
         year: this.state.year - 1,
         totalDays: new Date(this.state.year - 1, monthNumber + 1, 0).getDate(),
-        datesArray: []
+        datesArray: this.getDays(new Date(this.state.year - 1, monthNumber + 1, 0).getDate())
       })
     }
   }
@@ -73,7 +85,7 @@ class App extends Component {
       this.setState({
         month: this.selectMonth(monthNumber),
         totalDays: new Date(this.state.year, monthNumber + 1, 0).getDate(),
-        datesArray: []
+        datesArray: this.getDays(new Date(this.state.year, monthNumber + 1, 0).getDate())
       })
     }
     else {
@@ -82,20 +94,18 @@ class App extends Component {
         month: this.selectMonth(monthNumber),
         year: this.state.year + 1,
         totalDays: new Date(this.state.year + 1, monthNumber + 1, 0).getDate(),
-        datesArray: []
+        datesArray: this.getDays(new Date(this.state.year + 1, monthNumber + 1, 0).getDate())
       })
     }
   }
 
   selectDay(e) {
     this.setState({
-      selectedDay: e,
-      datesArray: []
+      selectedDay: e
     })
   }
 
   createInputs() {
-    console.log('pushed');
     document.querySelector('.plus').remove();
     var timeInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
     timeInput.placeholder = 'time';
@@ -114,12 +124,11 @@ class App extends Component {
     var taskInput = document.getElementById("task").value;
     var splitTime = timeInput.split(':');
     var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
-    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, time: timeInput, minutes: convertToMinutes, task: taskInput};
+    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, time: timeInput, minutes: convertToMinutes, task: taskInput, day: this.state.selectedDay};
     this.setState({
-      tasksArray: this.state.tasksArray.concat([taskObject]),
-      datesArray: []
+      tasksArray: this.state.tasksArray.concat([taskObject])
     })
-    console.log(this.state.tasksArray);
+    // console.log(this.state.tasksArray);
     document.getElementById("time").remove();
     document.getElementById("task").remove();
     document.getElementById("add").remove();
