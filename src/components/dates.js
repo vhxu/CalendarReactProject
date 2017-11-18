@@ -13,8 +13,12 @@ class Dates extends Component {
       });
     }
 
+
+
     if (this.props.datesArray.length === this.props.totalDays) {
       const dateGrid = this.props.datesArray.map((day) => {
+        var filterTasksArray = this.props.tasksArray.filter(tasks => tasks.date === this.props.month+" "+day.day+", "+this.props.year);
+        console.log(filterTasksArray[0]);
         if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
             <div className='day selected today' key={day.day}>{day.day}</div>
@@ -33,7 +37,7 @@ class Dates extends Component {
         else {
 
           return (
-            <div className='day' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
+            <div className='day test' onClick={() => {this.props.selectDay(day.day)}} key={day.day}>{day.day}</div>
           );
         }
       });
