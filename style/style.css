@@ -20,6 +20,9 @@ body{
   padding-left: 6px;
   flex-basis: 67%;
   align-items: center;
+  color: #F7F7F7;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
 .right-click {
@@ -34,22 +37,22 @@ body{
   height: 25px;
 }
 
-.plus {
+.plus-container {
   display: flex;
+  flex-basis: 33%;
   justify-content: flex-end;
-  margin-right: 10px;
+  margin-right: 5px;
   margin-top: 5px;
+}
 
+.plus {
+  background: url("../src/images/icons8-plus.png");
+  height: 25px;
+  width: 25px;
 }
 
 .inputs {
-  display: flex;
-  flex-basis: 33%;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  margin-right: 10px;
-  margin-left: 20px;
+  display: none;
 }
 
 .list-container {
@@ -82,6 +85,7 @@ body{
   margin-right: 4px;
   padding-right: 8px;
   flex-basis: 67%;
+  color: #D9D8D7;
 }
 
 .dates-list {
@@ -150,8 +154,22 @@ body{
 
 .tasks {
   display: flex;
-
+  font-size: 18px;
 }
+
+.task-location {
+  display: flex;
+  margin-left: 56px;
+  font-size: 16px;
+}
+
+.location-image {
+  background: url("../src/images/icons8-geo-fence.png");
+  width: 18px;
+  height: 18px;
+  margin-right: 13px;
+}
+
 
 .task-list {
   margin-left: 30px;

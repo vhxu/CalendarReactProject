@@ -21,6 +21,7 @@ class App extends Component {
       tasksArray: []
     };
     this.selectDay = this.selectDay.bind(this);
+    this.inputInfo = this.inputInfo.bind(this);
   }
 
   componentDidMount () {
@@ -113,22 +114,28 @@ class App extends Component {
 
   createInputs() {
     document.querySelector('.plus').remove();
-    var timeInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
-    timeInput.placeholder = 'time';
-    timeInput.id = 'time';
-    var taskInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
-    taskInput.placeholder = 'task';
-    taskInput.id = 'task';
-    var locationInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
-    locationInput.placeholder = 'location';
-    locationInput.id = 'location';
-    var addButton = document.querySelector('.inputs').appendChild(document.createElement("span"));
-    addButton.id = 'add';
-    addButton.innerHTML = 'Add';
-    addButton.onclick = this.inputInfo.bind(this);
+    var toggleList = document.querySelector('.list-of-stuff');
+    toggleList.style.display = 'none';
+    var toggleAddWindow = document.querySelector('.inputs');
+    toggleAddWindow.style.display = 'inline-block';
+    // var timeInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
+    // timeInput.placeholder = 'time';
+    // timeInput.id = 'time';
+    // var taskInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
+    // taskInput.placeholder = 'task';
+    // taskInput.id = 'task';
+    // var locationInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
+    // locationInput.placeholder = 'location';
+    // locationInput.id = 'location';
+    // var addButton = document.querySelector('.inputs').appendChild(document.createElement("span"));
+    // addButton.id = 'add';
+    // addButton.innerHTML = 'Add';
+    // addButton.onclick = this.inputInfo.bind(this);
   }
 
   inputInfo() {
+    var toggleList = document.querySelector('.list-of-stuff');
+    toggleList.style.display = null;
     var time = document.getElementById("time").value;
     var task = document.getElementById("task").value;
     var location = document.getElementById("location").value;
@@ -138,15 +145,16 @@ class App extends Component {
     this.setState({
       tasksArray: this.state.tasksArray.concat([taskObject])
     })
+    var toggleAddWindow = document.querySelector('.inputs');
+    toggleAddWindow.style.display = 'none';
     // console.log(this.state.month, this.state.year);
     // console.log(this.state.tasksArray.length);
-    document.getElementById("time").remove();
-    document.getElementById("task").remove();
-    document.getElementById("location").remove();
-    document.getElementById("add").remove();
-    var plusButton = document.querySelector('.app-container').appendChild(document.createElement("div"));
+    // document.getElementById("time").remove();
+    // document.getElementById("task").remove();
+    // document.getElementById("location").remove();
+    // document.getElementById("add").remove();
+    var plusButton = document.querySelector('.plus-container').appendChild(document.createElement("div"));
     plusButton.className= 'plus';
-    plusButton.innerHTML = '+';
     plusButton.onclick = this.createInputs.bind(this);
   }
 
@@ -160,11 +168,12 @@ class App extends Component {
             <div>{this.state.month} {this.state.year}</div>
             <div className='right-click' onClick={this.handleRightClick.bind(this)}></div>
           </div>
-
-          <div className='plus' onClick={this.createInputs.bind(this)}>+</div>
+          <div className='plus-container'>
+            <div className='plus' onClick={this.createInputs.bind(this)}></div>
+          </div>
         </div>
         <div className='dates-section'>
-          <Dates updateDatesArray={this.updateDatesArray} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
+          <Dates inputInfo={this.inputInfo} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay={this.selectDay}/>
         </div>
       </div>
     );
