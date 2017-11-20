@@ -20,7 +20,7 @@ class Dates extends Component {
 
     if (this.props.datesArray.length === this.props.totalDays) {
       if (this.props.tasksArray.length > 0){
-        var filterTasksArray = this.props.tasksArray.filter(task => task.date === this.props.monthName+" "+this.props.selectedDay+", "+this.props.year);
+        var filterTasksArray = this.props.tasksArray.filter(task => task.month === this.props.monthName&& task.year === this.props.year);
         console.log(filterTasksArray);
         for (var i = 0; i < filterTasksArray.length; i++) {
           this.props.datesArray[filterTasksArray[i].day - 1].task = true;

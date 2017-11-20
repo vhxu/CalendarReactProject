@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 class ListContainer extends Component {
 
+
   render() {
     var colors = ['red', 'blue', 'green', 'yellow', 'purple'];
     var filteredTasksArray = this.props.tasksArray.filter(task => task.date === this.props.month+" "+this.props.selectedDay+", "+this.props.year);
@@ -22,6 +23,7 @@ class ListContainer extends Component {
             )
           })}
         </div>
+        <div className='inputs'></div>
       </div>
     );
   }

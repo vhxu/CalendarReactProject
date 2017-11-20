@@ -45,13 +45,19 @@ class App extends Component {
   getDays(totalDays) {
     var datesArray = [];
     for (var i = 1; i <= totalDays; i++) {
-          datesArray.push({
-            day: i,
-            task: false
-          });
-        }
+      datesArray.push({
+        day: i,
+        task: false
+      });
+    }
     return datesArray;
   }
+
+  // updateDatesArray(datesArray) {
+  //   this.setState({
+  //     datesArray: datesArray
+  //   })
+  // }
 
   totalDays(year, month) {
     return new Date(new Date().getFullYear(), monthNumber + 1, 0).getDate()
@@ -113,6 +119,9 @@ class App extends Component {
     var taskInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
     taskInput.placeholder = 'task';
     taskInput.id = 'task';
+    var locationInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
+    locationInput.placeholder = 'location';
+    locationInput.id = 'location';
     var addButton = document.querySelector('.inputs').appendChild(document.createElement("span"));
     addButton.id = 'add';
     addButton.innerHTML = 'Add';
@@ -120,17 +129,20 @@ class App extends Component {
   }
 
   inputInfo() {
-    var timeInput = document.getElementById("time").value;
-    var taskInput = document.getElementById("task").value;
-    var splitTime = timeInput.split(':');
+    var time = document.getElementById("time").value;
+    var task = document.getElementById("task").value;
+    var location = document.getElementById("location").value;
+    var splitTime = time.split(':');
     var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
-    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, time: timeInput, minutes: convertToMinutes, task: taskInput, day: this.state.selectedDay};
+    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, time: time, minutes: convertToMinutes, task: task, location: location, day: this.state.selectedDay, month: this.state.month, year: this.state.year};
     this.setState({
       tasksArray: this.state.tasksArray.concat([taskObject])
     })
-    // console.log(this.state.tasksArray);
+    // console.log(this.state.month, this.state.year);
+    // console.log(this.state.tasksArray.length);
     document.getElementById("time").remove();
     document.getElementById("task").remove();
+    document.getElementById("location").remove();
     document.getElementById("add").remove();
     var plusButton = document.querySelector('.app-container').appendChild(document.createElement("div"));
     plusButton.className= 'plus';
@@ -148,11 +160,11 @@ class App extends Component {
             <div>{this.state.month} {this.state.year}</div>
             <div className='right-click' onClick={this.handleRightClick.bind(this)}></div>
           </div>
-          <div className='inputs'></div>
+
           <div className='plus' onClick={this.createInputs.bind(this)}>+</div>
         </div>
         <div className='dates-section'>
-          <Dates tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
+          <Dates updateDatesArray={this.updateDatesArray} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay = {this.selectDay}/>
         </div>
       </div>
     );
