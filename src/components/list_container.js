@@ -27,14 +27,29 @@ class ListContainer extends Component {
           })}
         </div>
         <div className='inputs'>
-          <div>Time</div>
-          <input id='time'></input>
-          <div>Task</div>
-          <input id='task'></input>
-          <div>Location</div>
-          <input id='location'></input>
-          <div id='add' onClick={()=>this.props.inputInfo()}>Add</div>
-          <div>Cancel</div>
+          <div className='input-title'>Add Event</div>
+          <form>
+            <div className='group'>
+              <input id='time' type='text' required></input>
+              <span className='bar'></span>
+              <label>Time</label>
+            </div>
+
+            <div className='group'>
+              <input id='task' type='text' required></input>
+              <span className='bar'></span>
+              <label>Task</label>
+            </div>
+
+            <div className='group'>
+              <input id='location' type='text' required></input>
+              <span className='bar'></span>
+              <label>Location</label>
+            </div>
+
+            <div id='add' onClick={()=>this.props.inputInfo()}>Add</div>
+            <div>Cancel</div>
+          </form>
 
         </div>
       </div>
