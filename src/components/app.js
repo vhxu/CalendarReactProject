@@ -22,6 +22,7 @@ class App extends Component {
     };
     this.selectDay = this.selectDay.bind(this);
     this.inputInfo = this.inputInfo.bind(this);
+    this.cancelInfo = this.cancelInfo.bind(this);
   }
 
   componentDidMount () {
@@ -113,24 +114,12 @@ class App extends Component {
   }
 
   createInputs() {
-    document.querySelector('.plus').remove();
+    var togglePlusButton = document.querySelector('.plus');
+    togglePlusButton.style.display = 'none';
     var toggleList = document.querySelector('.list-of-stuff');
     toggleList.style.display = 'none';
     var toggleAddWindow = document.querySelector('.inputs');
     toggleAddWindow.style.display = 'inline-block';
-    // var timeInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
-    // timeInput.placeholder = 'time';
-    // timeInput.id = 'time';
-    // var taskInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
-    // taskInput.placeholder = 'task';
-    // taskInput.id = 'task';
-    // var locationInput = document.querySelector('.inputs').appendChild(document.createElement("input"));
-    // locationInput.placeholder = 'location';
-    // locationInput.id = 'location';
-    // var addButton = document.querySelector('.inputs').appendChild(document.createElement("span"));
-    // addButton.id = 'add';
-    // addButton.innerHTML = 'Add';
-    // addButton.onclick = this.inputInfo.bind(this);
   }
 
   inputInfo() {
@@ -139,6 +128,7 @@ class App extends Component {
     var time = document.getElementById("time").value;
     var task = document.getElementById("task").value;
     var location = document.getElementById("location").value;
+    document.getElementById('event-form').reset();
     var splitTime = time.split(':');
     var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
     var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, time: time, minutes: convertToMinutes, task: task, location: location, day: this.state.selectedDay, month: this.state.month, year: this.state.year};
@@ -147,15 +137,16 @@ class App extends Component {
     })
     var toggleAddWindow = document.querySelector('.inputs');
     toggleAddWindow.style.display = 'none';
-    // console.log(this.state.month, this.state.year);
-    // console.log(this.state.tasksArray.length);
-    // document.getElementById("time").remove();
-    // document.getElementById("task").remove();
-    // document.getElementById("location").remove();
-    // document.getElementById("add").remove();
-    var plusButton = document.querySelector('.plus-container').appendChild(document.createElement("div"));
-    plusButton.className= 'plus';
-    plusButton.onclick = this.createInputs.bind(this);
+    var togglePlusButton = document.querySelector('.plus');
+    togglePlusButton.style.display = null;
+  }
+
+  cancelInfo() {
+    var toggleAddWindow = document.querySelector('.inputs');
+    toggleAddWindow.style.display = 'none';
+    document.getElementById('event-form').reset();
+    var togglePlusButton = document.querySelector('.plus');
+    togglePlusButton.style.display = null;
   }
 
   render() {
@@ -173,7 +164,7 @@ class App extends Component {
           </div>
         </div>
         <div className='dates-section'>
-          <Dates inputInfo={this.inputInfo} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay={this.selectDay}/>
+          <Dates cancelInfo={this.cancelInfo} inputInfo={this.inputInfo} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay={this.selectDay}/>
         </div>
       </div>
     );

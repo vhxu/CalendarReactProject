@@ -1,5 +1,6 @@
 body{
   margin: 0 auto 0 auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -9,7 +10,6 @@ body{
 }
 
 .app-container {
-  font-family: 'Roboto', sans-serif;
   display:flex;
 
 }
@@ -49,10 +49,6 @@ body{
   background: url("../src/images/icons8-plus.png");
   height: 25px;
   width: 25px;
-}
-
-.inputs {
-  display: none;
 }
 
 .list-container {
@@ -159,7 +155,7 @@ body{
 
 .task-location {
   display: flex;
-  margin-left: 56px;
+  margin-left: 59px;
   font-size: 16px;
 }
 
@@ -197,9 +193,17 @@ body{
   left: 50%;
 }
 
+.inputs {
+  display: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .input-title {
   margin-bottom: 40px;
   margin-top: 10px;
+  color: #7A4FF8;
+  font-size: 18px;
 }
 
 .group {
@@ -208,10 +212,10 @@ body{
 }
 
 input {
-  font-size:18px;
+  font-size:16px;
   padding:10px 10px 10px 5px;
   display:block;
-  width:325px;
+  width:315px;
   border:none;
   border-bottom:1px solid #7A4FF8;
   background-color: #F7F7F7;
@@ -222,8 +226,8 @@ input:focus {
 }
 
 label {
-  color:#999;
-  font-size:18px;
+  color:#ABABAB;
+  font-size:16px;
   font-weight:normal;
   position:absolute;
   pointer-events:none;
@@ -241,7 +245,7 @@ input:focus ~ label, input:valid ~ label {
 .bar  {
   position:relative;
   display:block;
-  width:325px;
+  width:330px;
 }
 
 .bar:before, .bar:after   {
@@ -263,4 +267,12 @@ input:focus ~ label, input:valid ~ label {
 
 input:focus ~ .bar:before, input:focus ~ .bar:after {
   width:50%;
+}
+
+.add-cancel {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #7A4FF8;
 }

@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 
 class ListContainer extends Component {
 
+  componentDidMount() {
+    if (document.querySelector('.list-item') != null) {
+      var item = this.refs.item;
+      var deleteButton = this.refs.delete;
+      item.addEventListener('onMouseEnter', function(e) {
+        deleteButton.style.color = 'red';
+      });
+    }
+  }
+
   render() {
     var colors = ['red', 'blue', 'green', 'yellow', 'purple'];
     var filteredTasksArray = this.props.tasksArray.filter(task => task.date === this.props.month+" "+this.props.selectedDay+", "+this.props.year);
@@ -14,21 +24,21 @@ class ListContainer extends Component {
         <div className='list-of-stuff'>
           {filteredTasksArray.map((task, i) => {
             return (
-              <div className='list-item' key={i}>
+              <div className='list-item' key={i} ref='item'>
                 <div className='tasks'>{task.time}<li className='task-list' style={{ color:colors[i]}}>{task.task}</li></div>
                 <div className='task-location'>
                   <div className='location-image'></div>
                   <div>{task.location}</div>
                 </div>
-
+                <div className='delete' ref='delete'>HOVER</div>
               </div>
 
             )
           })}
         </div>
         <div className='inputs'>
-          <div className='input-title'>Add Event</div>
-          <form>
+          <div className='input-title'>Create Event</div>
+          <form id='event-form'>
             <div className='group'>
               <input id='time' type='text' required></input>
               <span className='bar'></span>
@@ -46,9 +56,10 @@ class ListContainer extends Component {
               <span className='bar'></span>
               <label>Location</label>
             </div>
-
-            <div id='add' onClick={()=>this.props.inputInfo()}>Add</div>
-            <div>Cancel</div>
+            <div className='add-cancel'>
+              <div onClick={()=>this.props.cancelInfo()}>CANCEL</div>
+              <div id='add' onClick={()=>this.props.inputInfo()}>ADD</div>
+            </div>
           </form>
 
         </div>

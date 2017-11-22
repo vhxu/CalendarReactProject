@@ -81,7 +81,7 @@ class Dates extends Component {
           </div>
         </div>
         <div className='list-container'>
-            <ListContainer inputInfo={this.props.inputInfo} tasksArray={this.props.tasksArray} month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
+            <ListContainer cancelInfo={this.props.cancelInfo} inputInfo={this.props.inputInfo} tasksArray={this.props.tasksArray} month={this.props.monthName} selectedDay={this.props.selectedDay} year={this.props.year}/>
         </div>
       </div>
 
