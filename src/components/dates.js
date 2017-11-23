@@ -7,16 +7,6 @@ class Dates extends Component {
   render() {
     var firstDay = new Date(this.props.year, this.props.month, 1).getDay();
     var lastDay = new Date(this.props.year, this.props.month + 1, 0).getDay();
-    // for (var i = 1; i <= this.props.totalDays; i++) {
-    //   this.props.datesArray.push({
-    //     day: i,
-    //   });
-    // }
-
-
-//DOTS GO AWAY WHEN MONTH IS CHANGED
-
-
 
     if (this.props.datesArray.length === this.props.totalDays) {
       if (this.props.tasksArray.length > 0){
@@ -30,19 +20,19 @@ class Dates extends Component {
       const dateGrid = this.props.datesArray.map((day) => {
         if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth() && day.task === true) {
           return (
-            <div className='day selected today dot' key={day.day}>{day.day}</div>
+            <div className='day today dot selected-day' key={day.day}>{day.day}<div className='selected-circle'></div></div>
           )
         } else if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
-            <div className='day selected today' key={day.day}>{day.day}</div>
+            <div className='day today selected-day' key={day.day}>{day.day}<div className='selected-circle'></div></div>
           )
         } else if (day.day === this.props.selectedDay && day.task === true) {
           return (
-            <div className='day selected dot' key={day.day}>{day.day}</div>
+            <div className='day dot selected-day' key={day.day}>{day.day}<div className='selected-circle'></div></div>
           )
         } else if (day.day === this.props.selectedDay) {
           return (
-            <div className='day selected' key={day.day}>{day.day}</div>
+            <div className='day selected-day' key={day.day}>{day.day}<div className='selected-circle'></div></div>
           )
         } else if (day.day === this.props.currentDay && this.props.month === new Date().getMonth() && day.task === true) {
           return (

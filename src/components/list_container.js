@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 
 class ListContainer extends Component {
-
-  componentDidMount() {
-    if (document.querySelector('.list-item') != null) {
-      var item = this.refs.item;
-      var deleteButton = this.refs.delete;
-      item.addEventListener('onMouseEnter', function(e) {
-        deleteButton.style.color = 'red';
-      });
-    }
-  }
+  // 
+  // componentDidMount() {
+  //   if (document.querySelector('.list-item') != null) {
+  //     var item = this.refs.item;
+  //     var deleteButton = this.refs.delete;
+  //     item.addEventListener('onMouseEnter', function(e) {
+  //       deleteButton.style.color = 'red';
+  //     });
+  //   }
+  // }
 
   render() {
     var colors = ['red', 'blue', 'green', 'yellow', 'purple'];
