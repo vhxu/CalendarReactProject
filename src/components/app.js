@@ -108,6 +108,8 @@ class App extends Component {
   }
 
   selectDay(e) {
+    var selectedCircle = document.querySelector('.selected-circle');
+    selectedCircle.style.transform = "translateX(100px)";
     this.setState({
       selectedDay: e
     })

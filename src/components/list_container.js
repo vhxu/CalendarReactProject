@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class ListContainer extends Component {
-  // 
+  //
   // componentDidMount() {
   //   if (document.querySelector('.list-item') != null) {
   //     var item = this.refs.item;
@@ -13,7 +13,7 @@ class ListContainer extends Component {
   // }
 
   render() {
-    var colors = ['red', 'blue', 'green', 'yellow', 'purple'];
+    var colors = ['#FE635D', '#0AAAFB', '#46D383', '#FAF777', '#ABABAB', '#7A4FF8'];
     var filteredTasksArray = this.props.tasksArray.filter(task => task.date === this.props.month+" "+this.props.selectedDay+", "+this.props.year);
     filteredTasksArray.sort((a,b) => {return a.minutes-b.minutes});
     return (
