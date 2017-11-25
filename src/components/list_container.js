@@ -24,15 +24,16 @@ class ListContainer extends Component {
         <div className='list-of-stuff'>
           {filteredTasksArray.map((task, i) => {
             return (
-              <div className='list-item' key={i} ref='item'>
-                <div className='tasks'>{task.time}<li className='task-list' style={{ color:colors[i]}}>{task.task}</li></div>
-                <div className='task-location'>
-                  <div className='location-image'></div>
-                  <div>{task.location}</div>
+              <div className='list-item-delete' key={i}>
+                <div className='list-item'>
+                  <div className='tasks'>{task.time}<li className='task-list' style={{ color:colors[i]}}>{task.task}</li></div>
+                  <div className='task-location'>
+                    <div className='location-image'></div>
+                    <div>{task.location}</div>
+                  </div>
                 </div>
-                <div className='delete' ref='delete'>HOVER</div>
+                <div className='delete' onClick={()=>this.props.deleteTask(task.tracker)}></div>
               </div>
-
             )
           })}
         </div>

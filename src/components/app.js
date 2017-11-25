@@ -6,6 +6,7 @@ import Dates from './dates';
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var monthNumber = new Date().getMonth();
 var yearNumber = 0;
+var tracker = 0;
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class App extends Component {
     this.selectDay = this.selectDay.bind(this);
     this.inputInfo = this.inputInfo.bind(this);
     this.cancelInfo = this.cancelInfo.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   componentDidMount () {
@@ -108,8 +110,8 @@ class App extends Component {
   }
 
   selectDay(e) {
-    var selectedCircle = document.querySelector('.selected-circle');
-    selectedCircle.style.transform = "translateX(100px)";
+    // var selectedCircle = document.querySelector('.selected-circle');
+    // selectedCircle.classList.add('.move-cricle');
     this.setState({
       selectedDay: e
     })
@@ -133,10 +135,11 @@ class App extends Component {
     document.getElementById('event-form').reset();
     var splitTime = time.split(':');
     var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
-    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, time: time, minutes: convertToMinutes, task: task, location: location, day: this.state.selectedDay, month: this.state.month, year: this.state.year};
+    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, tracker: tracker, time: time, minutes: convertToMinutes, task: task, location: location, day: this.state.selectedDay, month: this.state.month, year: this.state.year};
     this.setState({
       tasksArray: this.state.tasksArray.concat([taskObject])
     })
+    tracker += 1;
     var toggleAddWindow = document.querySelector('.inputs');
     toggleAddWindow.style.display = 'none';
     var togglePlusButton = document.querySelector('.plus');
@@ -151,6 +154,13 @@ class App extends Component {
     togglePlusButton.style.display = null;
   }
 
+  deleteTask(e) {
+    var newArray = this.state.tasksArray.filter(tracker => tracker.tracker != e);
+    this.setState({
+      tasksArray: newArray
+    });
+  }
+
   render() {
 
     return(
@@ -158,7 +168,8 @@ class App extends Component {
         <div className='app-container'>
           <div className='month-bar'>
             <div className='left-click' onClick={this.handleLeftClick.bind(this)}></div>
-            <div>{this.state.month} {this.state.year}</div>
+            <div>{this.state.month}</div>
+            <div className='year'>{this.state.year}</div>
             <div className='right-click' onClick={this.handleRightClick.bind(this)}></div>
           </div>
           <div className='plus-container'>
@@ -166,7 +177,7 @@ class App extends Component {
           </div>
         </div>
         <div className='dates-section'>
-          <Dates cancelInfo={this.cancelInfo} inputInfo={this.inputInfo} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay={this.selectDay}/>
+          <Dates deleteTask={this.deleteTask} cancelInfo={this.cancelInfo} inputInfo={this.inputInfo} tasksArray={this.state.tasksArray} datesArray={this.state.datesArray} totalDays={this.state.totalDays} month={monthNumber} monthName={this.state.month} year={this.state.year} currentDay={this.state.currentDay} selectedDay={this.state.selectedDay} selectDay={this.selectDay}/>
         </div>
       </div>
     );
