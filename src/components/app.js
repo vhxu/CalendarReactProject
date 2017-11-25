@@ -111,7 +111,7 @@ class App extends Component {
 
   selectDay(e) {
     // var selectedCircle = document.querySelector('.selected-circle');
-    // selectedCircle.classList.add('.move-cricle');
+    // selectedCircle.classList.toggle('move-circle');
     this.setState({
       selectedDay: e
     })
@@ -154,8 +154,9 @@ class App extends Component {
     togglePlusButton.style.display = null;
   }
 
-  deleteTask(e) {
+  deleteTask(day, e) {
     var newArray = this.state.tasksArray.filter(tracker => tracker.tracker != e);
+    this.state.datesArray[day-1].task = false;
     this.setState({
       tasksArray: newArray
     });

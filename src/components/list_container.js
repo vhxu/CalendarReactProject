@@ -32,7 +32,7 @@ class ListContainer extends Component {
                     <div>{task.location}</div>
                   </div>
                 </div>
-                <div className='delete' onClick={()=>this.props.deleteTask(task.tracker)}></div>
+                <div className='delete' onClick={()=>this.props.deleteTask(this.props.selectedDay,task.tracker)}></div>
               </div>
             )
           })}
