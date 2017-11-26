@@ -110,8 +110,6 @@ class App extends Component {
   }
 
   selectDay(e) {
-    // var selectedCircle = document.querySelector('.selected-circle');
-    // selectedCircle.classList.toggle('move-circle');
     this.setState({
       selectedDay: e
     })

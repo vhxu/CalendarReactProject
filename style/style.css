@@ -58,20 +58,24 @@ body{
 
 .list-container {
   flex-basis: 33%;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14),
               0 1px 18px 0 rgba(0, 0, 0, 0.12),
               0 3px 5px -1px rgba(0, 0, 0, 0.4);
-  background-color: #F7F7F7;
+  /*background-color: #F7F7F7;*/
   margin-right: 3px;
+  background-color: #D9D8D7;
 }
 
 .list {
   display: flex;
   margin-bottom: 10px;
   border-bottom: solid 1px #C8C8C8;
-  background-color: #D9D8D7;
-  border-radius: 3px;
+  /*background-color: #D9D8D7;*/
+  background-color: #8F90AD;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  color: #F7F7F7;
 }
 
 .list-add {
@@ -82,8 +86,9 @@ body{
 .dates {
   display: flex;
   justify-content: space-around;
-  margin-left: -3px;
-  margin-right: 4px;
+  /*margin-left: -3px;*/
+  margin-right: 9px;
+  margin-top: 6px;
   flex-basis: 67%;
   color: #D9D8D7;
 }
@@ -99,7 +104,6 @@ body{
 .day-container {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .day {
@@ -107,12 +111,13 @@ body{
   justify-content: center;
   align-items: center;
   flex-basis: 14.1%;
-  height: 95px;
+  height: 85px;
   margin: 0 1px 1px 0;
   font-size: 20px;
   color: #F7F7F7;
   position: relative;
   z-index: 1;
+
 }
 
 .selected-circle {
@@ -125,10 +130,7 @@ body{
                      0 3px 1px -2px rgba(0, 0, 0, 0.2);
   position: absolute;
   z-index: -1;
-  bottom: 10px;
-  right: 16px;
-
-
+  /*transform: translateX(-33%) translateY(-65%);*/
 }
 
 /*.move-circle {
@@ -177,23 +179,25 @@ body{
 }
 
 .list-item {
-  /*padding: 5px 5px 5px 5px;
-  margin-top: 10px;
-  border-radius: 3px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                     0 1px 5px 0 rgba(0, 0, 0, 0.12),
-                     0 3px 1px -2px rgba(0, 0, 0, 0.2);*/
-
+  display: flex;
+  flex-direction: column;
+  flex-basis: 75%;
 }
 
 .tasks {
   display: flex;
+  flex-basis: 20%;
   font-size: 18px;
+  align-items: center;
+
+}
+
+.task-list {
 }
 
 .task-location {
   display: flex;
-  margin-left: 59px;
+
   font-size: 16px;
 }
 
@@ -201,18 +205,19 @@ body{
   background: url("../src/images/icons8-geo-fence.png");
   width: 18px;
   height: 18px;
-  margin-right: 13px;
+  margin-right: 10px;
+  margin-left: -6px;
 }
 
 .list-item-delete {
   display: flex;
   padding: 5px 5px 5px 5px;
   margin-top: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
                      0 1px 5px 0 rgba(0, 0, 0, 0.12),
                      0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  justify-content: space-between;
+  background-color: #F7F7F7;
 }
 
 .delete {
@@ -223,15 +228,17 @@ body{
   opacity: 0;
 }
 
+.delete:hover {
+  background: url("../src/images/icons8-cancel-30-hover.png");
+}
+
 .list-item-delete:hover .delete {
   transform: translateX(0px) translateY(5px);
   transition: transform 0.5s ease-out, opacity 1.5s ease-out;
   opacity: 1;
 }
 
-.task-list {
-  margin-left: 30px;
-}
+
 
 .task-divider {
   color: grey;
@@ -239,7 +246,7 @@ body{
   margin-bottom: 20px;
 }
 
- .dot {
+ /*.dot {
   position: relative;
 }
 
@@ -253,7 +260,7 @@ body{
   content: '';
   width: 8px;
   left: 50%;
-}
+}*/
 
 .inputs {
   display: none;
@@ -280,7 +287,7 @@ input {
   width:315px;
   border:none;
   border-bottom:1px solid #7A4FF8;
-  background-color: #F7F7F7;
+  background-color: #D9D8D7;
 }
 
 input:focus {
