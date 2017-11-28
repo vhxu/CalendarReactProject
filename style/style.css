@@ -1,6 +1,7 @@
 body{
   margin: 0 auto 0 auto;
   font-family: 'Roboto', sans-serif;
+  max-width: 1200px;
 }
 
 .container {
@@ -28,18 +29,21 @@ body{
 .year {
   margin-left: 10px;
   font-weight: 100;
+  color: #D9D8D7;
 }
 
 .right-click {
   background: url("../src/images/icons8-forward-filled.png");
   width: 25px;
   height: 25px;
+  cursor: pointer;
 }
 
 .left-click {
   background: url("../src/images/icons8-back-filled.png");
   width: 25px;
   height: 25px;
+  cursor: pointer;
 }
 
 .plus-container {
@@ -54,6 +58,7 @@ body{
   background: url("../src/images/icons8-plus.png");
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }
 
 .list-container {
@@ -111,50 +116,32 @@ body{
   justify-content: center;
   align-items: center;
   flex-basis: 14.1%;
-  height: 85px;
+  height: 95px;
   margin: 0 1px 1px 0;
   font-size: 20px;
   color: #F7F7F7;
   position: relative;
   z-index: 1;
-
+  cursor: pointer;
 }
 
 .selected-circle {
   border-radius: 50%;
-  height: 70px;
-  width: 70px;
+  height: 75px;
+  width: 75px;
   background: #F7F7F7;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
                      0 1px 5px 0 rgba(0, 0, 0, 0.12),
                      0 3px 1px -2px rgba(0, 0, 0, 0.2);
   position: absolute;
   z-index: -1;
-  /*transform: translateX(-33%) translateY(-65%);*/
-}
-
-/*.move-circle {
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-  background: #F7F7F7;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                     0 1px 5px 0 rgba(0, 0, 0, 0.12),
-                     0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  z-index: -1;
-  bottom: 10px;
-  right: 16px;
-  transform: translateX(80px) scale(0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
   transition: all 0.5s ease-out;
-  opacity: 0;
-}*/
-
-/*.selected-circle:hover {
-  transform: translateX(80px) scale(0.5);
-
-  opacity: 0;
-}*/
+}
 
 .selected-day {
   color: #7A4FF8;
@@ -170,7 +157,6 @@ body{
 
 .list-date {
   padding: 5px 5px 5px 5px;
-
 }
 
 .list-of-stuff {
@@ -186,26 +172,27 @@ body{
 
 .tasks {
   display: flex;
-  flex-basis: 20%;
+  flex-basis: 25%;
   font-size: 18px;
   align-items: center;
-
+  margin-right: 5px;
 }
 
 .task-list {
+  font-size: 18px;
 }
 
 .task-location {
   display: flex;
 
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .location-image {
   background: url("../src/images/icons8-geo-fence.png");
   width: 18px;
   height: 18px;
-  margin-right: 10px;
+  margin-right: 14px;
   margin-left: -6px;
 }
 
@@ -226,6 +213,7 @@ body{
   height: 30px;
   transform: translateX(10px) translateY(5px);
   opacity: 0;
+  cursor: pointer;
 }
 
 .delete:hover {
@@ -246,7 +234,7 @@ body{
   margin-bottom: 20px;
 }
 
- /*.dot {
+ .dot {
   position: relative;
 }
 
@@ -260,7 +248,8 @@ body{
   content: '';
   width: 8px;
   left: 50%;
-}*/
+}
+
 
 .inputs {
   display: none;
@@ -280,11 +269,36 @@ body{
   margin-bottom:55px;
 }
 
+#first-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+#first-group div input {
+  width: 300px;
+}
+
+#first-group div span {
+  width: 315px;
+}
+
+#am {
+  margin-top: 10px;
+  color: #ABABAB;
+  cursor: pointer;
+}
+
+#pm {
+  margin-top: 10px;
+  color: #ABABAB;
+  cursor: pointer;
+}
+
 input {
   font-size:16px;
   padding:10px 10px 10px 5px;
   display:block;
-  width:315px;
+  width:370px;;
   border:none;
   border-bottom:1px solid #7A4FF8;
   background-color: #D9D8D7;
@@ -314,7 +328,7 @@ input:focus ~ label, input:valid ~ label {
 .bar  {
   position:relative;
   display:block;
-  width:330px;
+  width:385px;
 }
 
 .bar:before, .bar:after   {
@@ -344,4 +358,8 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   margin-left: 10px;
   margin-right: 10px;
   color: #7A4FF8;
+}
+
+.add-cancel div {
+  cursor: pointer;
 }

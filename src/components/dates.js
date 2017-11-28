@@ -24,7 +24,7 @@ class Dates extends Component {
           )
         } else if (day.day === this.props.selectedDay && day.day === this.props.currentDay && this.props.month === new Date().getMonth()) {
           return (
-            <div className='day today selected-day' key={day.day}>{day.day}<div className='selected-circle'></div></div>
+            <div className='day selected-day today' key={day.day}>{day.day}<div className='selected-circle'></div></div>
           )
         } else if (day.day === this.props.selectedDay && day.task === true) {
           return (

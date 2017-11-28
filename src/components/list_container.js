@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
 
+var ampm = '';
 class ListContainer extends Component {
-  //
-  // componentDidMount() {
-  //   if (document.querySelector('.list-item') != null) {
-  //     var item = this.refs.item;
-  //     var deleteButton = this.refs.delete;
-  //     item.addEventListener('onMouseEnter', function(e) {
-  //       deleteButton.style.color = 'red';
-  //     });
-  //   }
-  // }
+
+  addAM() {
+    if (ampm === '' || ampm === 'pm') {
+      ampm = 'am';
+      document.getElementById('am').style.color='#7A4FF8';
+      document.getElementById('pm').style.color='#ABABAB';
+    }
+  }
+
+  addPM() {
+    if (ampm === '' || ampm =='am') {
+      ampm = 'pm';
+      document.getElementById('pm').style.color='#7A4FF8';
+      document.getElementById('am').style.color='#ABABAB';
+    }
+  }
 
   render() {
     var colors = ['#FE635D', '#0AAAFB', '#46D383', '#FAF777', '#ABABAB', '#7A4FF8'];
@@ -25,7 +32,7 @@ class ListContainer extends Component {
           {filteredTasksArray.map((task, i) => {
             return (
               <div className='list-item-delete' key={i}>
-                <div className='tasks'>{task.time}</div>
+                <div className='tasks' style={{ color:colors[i]}}>{task.time +' '+ task.ampm}</div>
                 <div className='list-item'>
                   <li className='task-list' style={{ color:colors[i]}}>{task.task}</li>
                   <div className='task-location'>
@@ -41,11 +48,17 @@ class ListContainer extends Component {
         <div className='inputs'>
           <div className='input-title'>Create Event</div>
           <form id='event-form'>
+            <div id='first-group'>
             <div className='group'>
               <input id='time' type='text' required></input>
               <span className='bar'></span>
               <label>Time</label>
             </div>
+            <div onClick={()=>this.addAM()} id='am'>AM</div>
+            <div onClick={()=>this.addPM()} id='pm'>PM</div>
+            </div>
+
+
 
             <div className='group'>
               <input id='task' type='text' required></input>
@@ -60,7 +73,7 @@ class ListContainer extends Component {
             </div>
             <div className='add-cancel'>
               <div onClick={()=>this.props.cancelInfo()}>CANCEL</div>
-              <div id='add' onClick={()=>this.props.inputInfo()}>ADD</div>
+              <div id='add' onClick={()=>this.props.inputInfo(ampm)}>ADD</div>
             </div>
           </form>
 

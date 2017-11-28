@@ -110,9 +110,14 @@ class App extends Component {
   }
 
   selectDay(e) {
+
     this.setState({
       selectedDay: e
     })
+    var circle = document.querySelector('.day');
+    circle.classList.add('active');
+    // var circle = document.querySelector('.selected-circle');
+    // circle.classList.add('move-circle');
   }
 
   createInputs() {
@@ -124,16 +129,25 @@ class App extends Component {
     toggleAddWindow.style.display = 'inline-block';
   }
 
-  inputInfo() {
+  inputInfo(e) {
     var toggleList = document.querySelector('.list-of-stuff');
     toggleList.style.display = null;
     var time = document.getElementById("time").value;
+
     var task = document.getElementById("task").value;
     var location = document.getElementById("location").value;
     document.getElementById('event-form').reset();
     var splitTime = time.split(':');
-    var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
-    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, tracker: tracker, time: time, minutes: convertToMinutes, task: task, location: location, day: this.state.selectedDay, month: this.state.month, year: this.state.year};
+    if (e === 'am' && +splitTime[0] === 12) {
+      var convertToMinutes = +splitTime[1];
+    } else if (e === 'am') {
+      var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
+    } else if (e ==='pm' && +splitTime[0] === 12) {
+      var convertToMinutes = (+splitTime[0])*60 + (+splitTime[1]);
+    } else if (e==='pm' && +splitTime[0] < 12) {
+      var convertToMinutes = (+splitTime[0] + 12)*60 + (+splitTime[1]);
+    }
+    var taskObject = {date: this.state.month+" "+this.state.selectedDay+", "+this.state.year, tracker: tracker, time: time, ampm: e, minutes: convertToMinutes, task: task, location: location, day: this.state.selectedDay, month: this.state.month, year: this.state.year};
     this.setState({
       tasksArray: this.state.tasksArray.concat([taskObject])
     })
