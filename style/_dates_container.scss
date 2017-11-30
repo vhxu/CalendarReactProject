@@ -1,0 +1,11 @@
+@import '_colors';
+
+.dates {
+  display: flex;
+  justify-content: space-around;
+  /*margin-left: -3px;*/
+  margin-right: 9px;
+  margin-top: 6px;
+  flex-basis: 67%;
+  color: $light-grey;
+}

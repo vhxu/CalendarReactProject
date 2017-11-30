@@ -1,0 +1,51 @@
+@import '_colors';
+
+.app-container {
+  display:flex;
+}
+
+.month-bar {
+  display: flex;
+  font-size: 45px;
+  padding-left: 6px;
+  flex-basis: 67%;
+  align-items: center;
+  color: $secondary-color-white;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.year {
+  margin-left: 10px;
+  font-weight: 100;
+  color: $light-grey;
+}
+
+.right-click {
+  background: url("../src/images/icons8-forward-filled.png");
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.left-click {
+  background: url("../src/images/icons8-back-filled.png");
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.plus-container {
+  display: flex;
+  flex-basis: 33%;
+  justify-content: flex-end;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.plus {
+  background: url("../src/images/icons8-plus.png");
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}

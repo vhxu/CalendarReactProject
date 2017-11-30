@@ -1,0 +1,17 @@
+@import '_colors';
+@import '_app';
+@import '_dates';
+@import '_dates_container';
+@import '_list_container';
+
+body{
+  margin: 0 auto 0 auto;
+  font-family: 'Roboto', sans-serif;
+  max-width: 1200px;
+}
+
+.container {
+  background-color: $primary-color;
+  border-radius: 5px;
+  padding-bottom: 3px;
+}
