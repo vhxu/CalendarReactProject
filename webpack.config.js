@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -6,9 +7,11 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist'), // This is where images AND js will go
+    filename: '[name].[chunkhash].js'
+    // path: __dirname,
+    // publicPath: '/',
+    // filename: 'bundle.js'
   },
   module: {
     rules: [
